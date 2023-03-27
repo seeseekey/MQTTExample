@@ -14,9 +14,9 @@ public class Multisensor implements Device {
 
     private Mqtt3BlockingClient client;
 
-    private String motionTopic;
+    private final String motionTopic;
 
-    private String temperatureTopic;
+    private final String temperatureTopic;
 
     private String getMotionPayload() {
 
@@ -41,7 +41,7 @@ public class Multisensor implements Device {
     public void sendData() {
 
         if (client == null) {
-            // Create MQQT client
+            // Create MQTT client
             client = Mqtt3Client.builder()
                     .identifier(UUID.randomUUID().toString())
                     .serverHost("localhost")

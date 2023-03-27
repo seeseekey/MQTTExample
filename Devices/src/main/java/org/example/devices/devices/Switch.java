@@ -12,7 +12,7 @@ public class Switch implements Device {
 
     private Mqtt3BlockingClient client;
 
-    private String topic;
+    private final String topic;
 
     private String getSwitchPayload() {
 
@@ -34,7 +34,7 @@ public class Switch implements Device {
     public void sendData() {
 
         if (client == null) {
-            // Create MQQT client
+            // Create MQTT client
             client = Mqtt3Client.builder()
                     .identifier(UUID.randomUUID().toString())
                     .serverHost("localhost")
